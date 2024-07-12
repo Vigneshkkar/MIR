@@ -8,7 +8,7 @@ const TransactionSchema = new mongoose.Schema<Transaction>({
     Comments:  {type: String, required: false},
     sender: { type: Schema.Types.ObjectId, ref: 'Person'},
     recipient:{ type: Schema.Types.ObjectId, ref: 'Person'},
-    amount:  {type: Number, get: (v: number) =>Number((v/100).toFixed(2)), set: (v:number) => v*100, required: true},
+    Amount:  {type: Number, get: (v: number) =>Number((v/100).toFixed(2)), set: (v:number) => v*100, required: true},
     CurrencyCd: {type: String, required: true},
     status:  {type: String,enum: Object.values(Status), default: Status.PENDING, required: false}
 });

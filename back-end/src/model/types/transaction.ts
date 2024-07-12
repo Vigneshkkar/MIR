@@ -7,7 +7,7 @@ export class Transaction {
     Comments!: string;
     sender!: Person;
     recipient!: Person;
-    amount: number=0;
+    Amount: number=0;
     CurrencyCd: string = '';
     status: Status | undefined;
   }

@@ -7,8 +7,9 @@ import { Status } from '../model/types/person';
 export class TransactionService {
   
     static async  get(startDate: Date, endDate: Date) {
-   return await TransactionModel.find({
-    date: { $gte: startDate.getTime(), $lte: endDate.getTime() },
+        return await TransactionModel.find({
+    
+    date: { $gte: startDate, $lte: endDate },
     status: { $ne: Status.PENDING }
   }).select('id date Comments').then(res => res).catch(err => {throw err});
   }
@@ -25,7 +26,7 @@ export class TransactionService {
     Object.entries(transaction).map(([key, value]) => {
         switch (key) {
             case 'date':
-                updated[key] = new Date(value).getTime();
+                updated[key] = new Date(value);
                 break;
             case 'sender':
                 updated[key] = sender._id;
